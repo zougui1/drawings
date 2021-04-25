@@ -1,0 +1,112 @@
+.previews {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 5px 2px #0006;
+  z-index: 999999999;
+  min-width: 250px;
+  min-height: 180px;
+  user-select: none;
+}
+
+.previews > * {
+  background-color: #bbb;
+  display: inline;
+}
+
+.previews > *.hide {
+  display: none;
+}
+
+.previews .ref-view .carousel-root,
+.previews .ref-view .carousel-slider,
+.previews .ref-view .carousel-wrapper,
+.previews .ref-view .slider-wrapper,
+.previews .ref-view .slider,
+.previews .ref-view .interactable-wrapper {
+  height: 100%;
+}
+
+.previews .ref-view img {
+  height: auto;
+  width: auto;
+}
+
+/* start - small */
+.previews > *.small {
+  position: relative;
+}
+
+.previews > *.small {
+  width: 250px !important;
+  max-height: 180px;
+}
+
+.previews .ref-view.small .carousel-root,
+.previews .ref-view.small .carousel-slider,
+.previews .ref-view.small .carousel-wrapper,
+.previews .ref-view.small .slider-wrapper,
+.previews .ref-view.small .slider,
+.previews .ref-view.small .interactable-wrapper,
+.previews .ref-view.small img {
+  height: 100%;
+  max-width: 250px !important;
+}
+/* end - small */
+
+/* start - halfScreen */
+.previews > *.halfScreen {
+  width: 50vw !important;
+  height: 100vh;
+}
+
+.previews .ref-view.halfScreen .carousel-root,
+.previews .ref-view.halfScreen .carousel-slider,
+.previews .ref-view.halfScreen .carousel-wrapper,
+.previews .ref-view.halfScreen .slider-wrapper,
+.previews .ref-view.halfScreen .slider,
+.previews .ref-view.halfScreen .interactable-wrapper,
+.previews .ref-view.halfScreen img {
+  max-width: 50vw !important;
+}
+/* end - halfScreen */
+
+/* start - fullscreen */
+.previews > *.fullscreen {
+  width: 100vw !important;
+  height: 100vh;
+}
+
+.previews .ref-view.fullscreen .carousel-root,
+.previews .ref-view.fullscreen .carousel-slider,
+.previews .ref-view.fullscreen .carousel-wrapper,
+.previews .ref-view.fullscreen .slider-wrapper,
+.previews .ref-view.fullscreen .slider {
+  height: 100vh;
+  width: 100vw;
+}
+
+.previews .ref-view.fullscreen .interactable-wrapper,
+.previews .ref-view.fullscreen img {
+  height: auto;
+  width: auto;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+}
+/* end - fullscreen */
+
+/* start - delete ref button */
+.reference-delete-button {
+  position: absolute !important;
+  top: 0;
+  left: 10px;
+  display: none !important;
+  color: #fff !important;
+  stroke: #000b;
+}
+
+.ref-view .carousel-root:hover .reference-delete-button {
+  display: initial !important;
+}
+/* end - delete ref button */

@@ -1,0 +1,25 @@
+.canvas-wrapper {
+  /*position: relative;
+  overflow: hidden;*/
+  width: 100%;
+  height: 100vh;
+}
+
+.canvas-wrapper .canvas {
+  /*transform-origin: 0 0;
+  position: absolute;
+  overflow: hidden;*/
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-wrapper .debug-tooltip {
+  display: flex;
+  flex-direction: column;
+  color: #ddd;
+  background-color: #000c;
+  padding: 10px 12px;
+  transform-origin: 0 0;
+  line-height: 1.3rem;
+  letter-spacing: 0.05rem;
+}

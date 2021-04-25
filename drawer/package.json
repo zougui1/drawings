@@ -1,0 +1,33 @@
+{
+  "name": "drawer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "start": "nodemon lib -r source-map-support/register lib",
+    "build": "heft build --clean",
+    "compile": "heft build --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rushstack/eslint-config": "^2.3.3",
+    "@rushstack/heft": "^0.28.1",
+    "@types/heft-jest": "^1.0.2",
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.37",
+    "eslint": "^7.24.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "flubber": "^0.4.2",
+    "kute.js": "^2.1.1-alpha3",
+    "lodash": "^4.17.21",
+    "polymorph": "^0.0.2",
+    "polymorph-js": "^1.0.2",
+    "svgpath": "^2.3.1"
+  }
+}
