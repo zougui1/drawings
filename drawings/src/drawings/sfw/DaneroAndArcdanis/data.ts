@@ -23,12 +23,6 @@ export const data = {
           stroke: palette.borders,
           fill: palette.danero.beard,
         },
-        braid: {
-          name: 'braid',
-          zIndex: 150,
-          stroke: palette.borders,
-          fill: palette.danero.beard,
-        },
         tip: {
           name: 'fluff tip',
           zIndex: 150,
@@ -59,11 +53,6 @@ export const data = {
       },
 
       ear: {
-        shape: {
-          name: 'ear shape',
-          zIndex: 100,
-          stroke: palette.borders,
-        },
         inner: {
           name: 'ear inner filling',
           zIndex: 85,

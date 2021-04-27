@@ -41,7 +41,7 @@ export const DebugTooltip: React.FC<DebugTooltipProps> = ({ drawerData, segment,
       </div>
       {segment.path.stroke.toLowerCase() !== 'none' && (
         <div>
-          Fill: {segment.path.stroke}
+          Stroke: {segment.path.stroke}
         </div>
       )}
       {segment.path.fill.toLowerCase() !== 'none' && (

@@ -1,3 +1,5 @@
+import 'source-map-support/register';
+
 export * from './animation';
 export * from './elements';
 export * from './PathData';

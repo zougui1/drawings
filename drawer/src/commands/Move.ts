@@ -1,13 +1,15 @@
 import { Command, Position } from './Command';
+import { CommandType } from './commandTypes';
 import { Point, PointObject } from '../point';
 
 export class Move extends Command {
 
-  static type: 'move' = 'move';
+  static type: CommandType.move = CommandType.move;
   static commands = { [Position.RELATIVE]: 'm', [Position.ABSOLUTE]: 'M' };
   static commandCount = 1;
 
   private point: Point;
+  public readonly commandType: CommandType.move = CommandType.move;
 
   constructor(x: number, y: number) {
     super();
@@ -61,7 +63,7 @@ export class Move extends Command {
 }
 
 export interface MoveObject {
-  type: 'move';
+  type: CommandType.move;
   position: Position;
   point: PointObject;
 }

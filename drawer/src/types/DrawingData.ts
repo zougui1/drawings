@@ -1,3 +1,7 @@
+export interface GroupData {
+  name: string;
+}
+
 export interface DrawingData {
   name: string;
   zIndex: number;
@@ -5,3 +9,5 @@ export interface DrawingData {
   fill?: string;
   strokeWidth?: number;
 }
+
+export type FlatDrawingData = (DrawingData | GroupData) & { path: string | undefined };

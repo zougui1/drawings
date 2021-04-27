@@ -1,9 +1,12 @@
 import { Command, Position } from './Command';
+import { CommandType } from './commandTypes';
 
 export class Close extends Command {
-  static type: 'close' = 'close';
+  static type: CommandType.close = CommandType.close;
   static commands = { [Position.RELATIVE]: 'z', [Position.ABSOLUTE]: 'Z' };
   static commandCount = 1;
+
+  public readonly commandType: CommandType.close = CommandType.close;
 
   constructor() {
     super();
@@ -54,6 +57,6 @@ export class Close extends Command {
 }
 
 export interface CloseObject {
-  type: 'close';
+  type: CommandType.close;
   position: Position;
 }

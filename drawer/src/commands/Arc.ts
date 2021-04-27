@@ -1,8 +1,9 @@
 import { Command, Position } from './Command';
+import { CommandType } from './commandTypes';
 import { Point, PointObject } from '../point';
 
 export class Arc extends Command {
-  public static readonly type: 'arc' = 'arc';
+  public static readonly type: CommandType.arc = CommandType.arc;
   public static readonly commands: Record<Position, string> = { [Position.RELATIVE]: 'a', [Position.ABSOLUTE]: 'A' };
   public static readonly commandCount: number = 1;
 
@@ -11,6 +12,7 @@ export class Arc extends Command {
   protected _rotation: number = 0;
   protected _sweep: boolean = false;
   protected _large: boolean = false;
+  public readonly commandType: CommandType.arc = CommandType.arc;
 
   public constructor(x: number = 0, y: number = 0) {
     super();
@@ -118,7 +120,7 @@ export class Arc extends Command {
 }
 
 export interface ArcObject {
-  type: 'arc',
+  type: CommandType.arc,
   position: Position;
   radius: PointObject;
   point: PointObject;

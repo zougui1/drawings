@@ -77,6 +77,10 @@ export abstract class DrawingElement {
 
   //#region name
   name(name: string): this {
+    return this.setName(name);
+  }
+
+  setName(name: string): this {
     this._name = name;
     return this;
   }

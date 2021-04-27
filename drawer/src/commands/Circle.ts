@@ -1,16 +1,18 @@
 import { Command, Position } from './Command';
+import { CommandType } from './commandTypes';
 import { Arc } from './Arc';
 import { Close } from './Close';
 import { Point, PointObject } from '../point';
 
 export class Circle extends Command {
 
-  public static readonly type: 'circle' = 'circle';
+  public static readonly type: CommandType.circle = CommandType.circle;
   public static readonly commandCount: number = 2;
 
   public point: Point;
   public _radius: Point = new Point(0, 0);
   protected _rotation: number = 0;
+  public readonly commandType: CommandType.circle = CommandType.circle;
 
   public constructor(x: number = 0, y: number = 0, rx: number = 0, ry: number = 0) {
     super();
@@ -89,7 +91,7 @@ export class Circle extends Command {
 }
 
 export interface CircleObject {
-  type: 'circle',
+  type: CommandType.circle,
   position: Position;
   radius: PointObject;
   point: PointObject;

@@ -37,6 +37,11 @@ const sendDrawingToClient = async () => {
   if (typeof data === 'string') {
     console.error(chalk.red(data));
   } else if (data && typeof data === 'object') {
+    if (data.type === 'error') {
+      //console.error(data);
+      console.error(new Error(data.message));
+    }
+
     console.time('stringify');
     io.emit('update-svg', JSON.stringify(data));
     console.timeEnd('stringify');

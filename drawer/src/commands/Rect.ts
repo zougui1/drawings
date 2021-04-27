@@ -1,15 +1,17 @@
 import { Command, Position } from './Command';
+import { CommandType } from './commandTypes';
 import { Move } from './Move';
 import { Line } from './Line';
 import { Point, PointObject } from '../point';
 
 export class Rect extends Command {
 
-  public static readonly type: 'rect' = 'rect';
+  public static readonly type: CommandType.rect = CommandType.rect;
   public static readonly commandCount: number = 5;
 
   private _point: Point;
   private _size: Point;
+  public readonly commandType: CommandType.rect = CommandType.rect;
 
   public constructor(x: number, y: number, width: number, height: number) {
     super();
@@ -68,7 +70,7 @@ export class Rect extends Command {
 }
 
 export interface RectObject {
-  type: 'rect';
+  type: CommandType.rect;
   position: Position;
   point: PointObject;
   size: PointObject;

@@ -7,7 +7,7 @@ export const tongueMixed = (drawer: Group) => {
     .path(data.arcdanis.head.tongue)
 
     // top
-    .move(1038, 386.3).absolute()
+    .move(1038, 386.3).absolute().name('some')
     .curve(-80, 10, -215, 30, -275, 64).offset(12, -10)
     // outer curve
     .curve(-48, 30, -85, 100, -80, 150).offset(-7, -1)

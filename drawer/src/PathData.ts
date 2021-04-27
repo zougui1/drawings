@@ -60,6 +60,10 @@ export class PathData {
     return this.executeMethod('relative');
   }
 
+  name(name: string): this {
+    return this.executeMethod('name', [name]);
+  }
+
   x(x: number): this {
     return this.executeMethod('setX', [x]);
   }

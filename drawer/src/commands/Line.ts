@@ -1,7 +1,8 @@
 import { Command, Position } from './Command';
+import { CommandType, LineType } from './commandTypes';
 
 export class Line extends Command {
-  static type: 'line' = 'line';
+  static type: CommandType.line = CommandType.line;
   static hCommands = { [Position.RELATIVE]: 'h', [Position.ABSOLUTE]: 'H' };
   static vCommands = { [Position.RELATIVE]: 'v', [Position.ABSOLUTE]: 'V' };
   static commands = { [Position.RELATIVE]: 'l', [Position.ABSOLUTE]: 'L' };
@@ -9,11 +10,22 @@ export class Line extends Command {
 
   protected _x?: number;
   protected _y?: number;
+  public readonly commandType: LineType;
 
   constructor(x?: number, y?: number) {
     super();
     this._x = isNaN(Number(x)) ? undefined : x;
     this._y = isNaN(Number(y)) ? undefined : y;
+
+    if (this._x == null && this._y == null) {
+      throw new Error(`Line must have at least x or y be a valid number. Got x: "${this._x}" and y: "${this._y}".`);
+    } else if (this._x == null) {
+      this.commandType = LineType.verticalLine;
+    } else if (this._y == null) {
+      this.commandType = LineType.horizontalLine;
+    } else {
+      this.commandType = LineType.line;
+    }
   }
 
   //#region public API
@@ -83,7 +95,7 @@ export class Line extends Command {
 }
 
 export interface LineObject {
-  type: 'line';
+  type: CommandType.line;
   position: Position;
   x?: number;
   y?: number;

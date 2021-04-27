@@ -5,7 +5,8 @@ specifiers:
   '@rushstack/heft': ^0.28.1
   '@types/heft-jest': ^1.0.2
   '@types/lodash': ^4.14.168
-  '@types/node': ^14.14.37
+  '@types/node': ^14.14.41
+  '@types/stack-trace': ^0.0.29
   eslint: ^7.24.0
   flubber: ^0.4.2
   kute.js: ^2.1.1-alpha3
@@ -13,6 +14,7 @@ specifiers:
   polymorph: ^0.0.2
   polymorph-js: ^1.0.2
   source-map-support: ^0.5.19
+  stack-trace: ^0.0.10
   svgpath: ^2.3.1
   typescript: ^4.2.4
 
@@ -22,6 +24,7 @@ dependencies:
   lodash: 4.17.21
   polymorph: 0.0.2
   polymorph-js: 1.0.2
+  stack-trace: 0.0.10
   svgpath: 2.3.1
 
 devDependencies:
@@ -29,7 +32,8 @@ devDependencies:
   '@rushstack/heft': 0.28.1
   '@types/heft-jest': 1.0.2
   '@types/lodash': 4.14.168
-  '@types/node': 14.14.37
+  '@types/node': 14.14.41
+  '@types/stack-trace': 0.0.29
   eslint: 7.24.0
   source-map-support: 0.5.19
   typescript: 4.2.4
@@ -917,12 +921,20 @@ packages:
     resolution: {integrity: sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==}
     dev: true
 
+  /@types/node/14.14.41:
+    resolution: {integrity: sha512-dueRKfaJL4RTtSa7bWeTK1M+VH+Gns73oCgzvYfHZywRCoPSd8EkXBL0mZ9unPTveBn+D9phZBaxuzpwjWkW0g==}
+    dev: true
+
   /@types/normalize-package-data/2.4.0:
     resolution: {integrity: sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==}
     dev: true
 
   /@types/prettier/1.19.1:
     resolution: {integrity: sha512-5qOlnZscTn4xxM5MeGXAMOsIOIKIbh9e85zJWfBRVPlRMEVawzoPhINYbRGkBZCI8LxvBe7tJCdWiarA99OZfQ==}
+    dev: true
+
+  /@types/stack-trace/0.0.29:
+    resolution: {integrity: sha512-TgfOX+mGY/NyNxJLIbDWrO9DjGoVSW9+aB8H2yy1fy32jsvxijhmyJI9fDFgvz3YP4lvJaq9DzdR/M1bOgVc9g==}
     dev: true
 
   /@types/stack-utils/1.0.1:
@@ -5345,6 +5357,10 @@ packages:
       safer-buffer: 2.1.2
       tweetnacl: 0.14.5
     dev: true
+
+  /stack-trace/0.0.10:
+    resolution: {integrity: sha1-VHxws0fo0ytOEI6hoqFZ5f3eGcA=}
+    dev: false
 
   /stack-utils/1.0.5:
     resolution: {integrity: sha512-KZiTzuV3CnSnSvgMRrARVCj+Ht7rMbauGDK0LdVFRGyenwdylpajAp4Q0i6SX8rEmbTpMMf6ryq2gb8pPq2WgQ==}

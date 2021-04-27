@@ -1,20 +1,18 @@
-import { Command, Position, Algorithm } from './Command';
-import { catmullRomToBezier } from './algorithms';
+import { Command, Position } from './Command';
+import { CommandType, CurveType } from './commandTypes';
 import { Point, PointObject, PointArray } from '../point';
 import { trimToNaN } from '../utils';
 
 export class Curve extends Command {
-  static type: 'curve' = 'curve';
+  static type: CommandType.curve = CommandType.curve;
   static lineCommands = { [Position.RELATIVE]: 'l', [Position.ABSOLUTE]: 'L' };
   static quadraticCommands = { [Position.RELATIVE]: 'q', [Position.ABSOLUTE]: 'Q' };
   static cubicCommands = { [Position.RELATIVE]: 'c', [Position.ABSOLUTE]: 'C' };
   static commandCount = 1;
 
-  static catmullRomToBezier = catmullRomToBezier;
-
   private points: PointArray;
   private _offset: Point = new Point(0, 0);
-  private algorithm: Algorithm = Algorithm.BEZIER;
+  public readonly commandType: CurveType;
 
   constructor(...numbers: number[]) {
     super();
@@ -24,6 +22,21 @@ export class Curve extends Command {
     }
 
     this.points = new PointArray(numbers);
+
+    switch (this.points.length) {
+      case 1:
+        this.commandType = CurveType.line;
+        break;
+      case 2:
+        this.commandType = CurveType.quadraticCurve;
+        break;
+      case 3:
+        this.commandType = CurveType.bezierCurve;
+        break;
+
+      default:
+        throw new Error(`Curves only accept 1, 2 and 3 points. Got ${this.points.length} points.`);
+    }
   }
 
   //#region public API
@@ -61,28 +74,12 @@ export class Curve extends Command {
     this._offset.set(offsetX, offsetY);
     return this;
   }
-
-  catmullRom(): this {
-    this.algorithm = Algorithm.CATMULL_ROM;
-    return this;
-  }
   //#endregion
 
   //#region parsing
-  protected catmullRomToString(points: PointArray): string {
-    if (points.length < 3) {
-      throw new Error('Catmull-Rom spline must have at least three points.');
-    }
+  toString(): string {
+    const points = this.points.offsetAll(this._offset);
 
-    const coords = points.toCoords();
-    const command = this.getCommand(Curve.cubicCommands);
-
-    return catmullRomToBezier(coords, false)
-      .map(curve => `${command} ${new PointArray(curve).toString()}`)
-      .join('\n');
-  }
-
-  protected bezierToString(points: PointArray): string {
     switch (points.length) {
       case 1:
         return `${this.getCommand(Curve.lineCommands)} ${points.toString()}`;
@@ -93,18 +90,6 @@ export class Curve extends Command {
 
       default:
         throw new Error('Bezier curve does not support more than three points.');
-    }
-  }
-
-  toString(): string {
-    const points = this.points.offsetAll(this._offset);
-
-    switch (this.algorithm) {
-      case Algorithm.CATMULL_ROM:
-        return this.catmullRomToString(points);
-
-      default:
-        return this.bezierToString(points);
     }
   }
 
@@ -119,7 +104,6 @@ export class Curve extends Command {
     return {
       type: Curve.type,
       position: this.position,
-      algorithm: this.algorithm,
       offset: this._offset.toObject(),
       points: this.points.toArray(),
     };
@@ -128,7 +112,6 @@ export class Curve extends Command {
   static fromObject(data: CurveObject): Curve {
     const curve = new Curve(0, 0).setPosition(data.position);
     curve.points = PointArray.fromArray(data.points);
-    curve.algorithm = data.algorithm;
     curve._offset = Point.fromObject(data.offset);
 
     return curve;
@@ -137,9 +120,8 @@ export class Curve extends Command {
 }
 
 export interface CurveObject {
-  type: 'curve';
+  type: CommandType.curve;
   position: Position;
   points: PointObject[];
   offset: PointObject;
-  algorithm: Algorithm;
 }

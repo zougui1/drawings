@@ -1,9 +1,12 @@
+import stackTrace from 'stack-trace';
+
 import { DrawingElement, DrawingElementObject } from './DrawingElement';
 import { Animate, AnimatePath, AnimateMotion, AnimationJSON, AnimateJSON, AnimateMotionJSON } from './animation';
 import { PathData, PathDataArray } from '../PathData';
 import { getSegmentsData } from '../getSegmentsData';
 import { Transform } from '../Transform';
 import { ObjectLiteral, SegmentData } from '../types';
+import { PROJECT_DIR } from '../constants';
 
 export class Path extends DrawingElement {
 
@@ -115,6 +118,11 @@ export class Path extends DrawingElement {
 
   relative(): this {
     this.pathData.relative();
+    return this;
+  }
+
+  name(name: string): this {
+    this.pathData.name(name);
     return this;
   }
 

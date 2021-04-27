@@ -1,18 +1,16 @@
-import _ from 'lodash';
-import * as polymorph from 'polymorph-js';
-import { interpolate } from 'flubber';
-
-import { Drawer, DrawerObject, Group, GroupObject, Path, PathObject } from '../elements';
+import { checkGroupDrawsEverything, checkDataFormat, checkKeyframeShape } from './animationChecks';
+import { Drawer, DrawerObject, Group, GroupObject, Path } from '../elements';
 import { Previews } from '../Previews';
-import { ObjectLiteral } from '../types';
-import { getNth } from '../utils';
+import { ObjectLiteral, FlatDrawingData } from '../types';
+import { flattenDrawingData } from '../utils';
 
 export class Animation {
 
   static readonly type: 'animation' = 'animation';
 
   protected _name: string;
-  protected _data: ObjectLiteral;
+  protected readonly _data: ObjectLiteral;
+  protected readonly _flatData: FlatDrawingData[] = [];
   protected _drawer: Drawer;
   protected _duration: number | undefined;
   protected _drawingModel: Record<string, ('stroke' | 'fill')[]> = {};
@@ -21,6 +19,10 @@ export class Animation {
   constructor(name: string, data: ObjectLiteral) {
     this._name = name;
     this._data = data;
+    this._flatData = flattenDrawingData(data);
+
+    checkDataFormat(this._flatData);
+
     this._drawer = new Drawer(data, name);
   }
 
@@ -31,6 +33,16 @@ export class Animation {
   }
 
   addKeyFrames(keyFrames: Record<string, (drawer: Group) => void>): this {
+    for (const [keyTime, drawer] of Object.entries(keyFrames)) {
+      if (isNaN(+keyTime)) {
+        throw new Error(`The keytime must be a number. Got "${keyTime}".`);
+      }
+
+      if (typeof drawer !== 'function') {
+        throw new Error(`The drawer of a keyframe must be a function. Got "${drawer}".`);
+      }
+    }
+
     const keyTimes = Object.keys(keyFrames).map(kt => +kt).sort();
 
     if (!keyTimes.length) {
@@ -47,10 +59,15 @@ export class Animation {
     this._duration = duration;
 
     keyTimes.forEach((keyTime, i) => {
+      const firstDrawer = this._keyframes[0]?.drawer;
       const prevDrawer = this._keyframes[i - 1]?.drawer;
       const drawer = new Group(this._data);
 
       keyFrames[keyTime](drawer);
+
+      if (firstDrawer) {
+        checkKeyframeShape(firstDrawer, drawer);
+      }
 
       if (prevDrawer) {
         mergeElements(prevDrawer, drawer);
@@ -62,6 +79,7 @@ export class Animation {
       });
     });
 
+    checkGroupDrawsEverything(this._keyframes[0].drawer, this._flatData);
     const map: Record<string, { time: number, path: Path }[]> = {};
 
     for (const { time, drawer } of this._keyframes) {

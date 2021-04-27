@@ -28,6 +28,7 @@ export const labelToType: Record<string, string> = {
 
 export const exposedMethods = {
   absolute: [Command],
+  name: [Command],
   relative: [Command],
   setX: [Line, Arc],
   setY: [Line, Arc],

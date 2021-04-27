@@ -30,7 +30,7 @@ export class Group extends DrawingElement {
 
     path
       .namespace(this.buildName())
-      .name(name)
+      .setName(name)
       .zIndex(zIndex)
       .stroke(stroke ?? 'none')
       .fill(fill ?? 'none')
