@@ -1,0 +1,51 @@
+{
+  "name": "dev-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "start": "WATCH_DIR_NAME=sfw/DaneroAndArcdanis nodemon lib -r source-map-support/register lib",
+    "build": "heft build --clean",
+    "compile": "heft build --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rushstack/eslint-config": "^2.3.3",
+    "@rushstack/heft": "^0.28.1",
+    "@types/express": "^4.17.11",
+    "@types/fs-extra": "^9.0.11",
+    "@types/gif-encoder": "^0.7.0",
+    "@types/gifencoder": "^2.0.1",
+    "@types/heft-jest": "^1.0.2",
+    "@types/imagemin": "^7.0.0",
+    "@types/imagemin-upng": "^2.0.0",
+    "@types/jsdom": "^16.2.10",
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.37",
+    "@types/png.js": "^0.2.0",
+    "@types/pngjs": "^6.0.0",
+    "@types/sharp": "^0.28.0",
+    "eslint": "^7.24.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "chokidar": "^3.5.1",
+    "drawer": "1.0.0",
+    "express": "^4.17.1",
+    "fs-extra": "^9.1.0",
+    "gif-encoder": "^0.7.2",
+    "gifencoder": "^2.0.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "png-file-stream": "^1.2.1",
+    "pngjs": "^6.0.0",
+    "polymorph-js": "^1.0.2",
+    "sharp": "^0.28.1",
+    "socket.io": "^4.0.1"
+  }
+}

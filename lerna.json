@@ -1,0 +1,9 @@
+{
+  "npmClient": "pnpm",
+  "packages": [
+    "apps/*",
+    "packages/*",
+    "drawings"
+  ],
+  "version": "1.0.0"
+}

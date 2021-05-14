@@ -1,0 +1,8 @@
+.radio svg {
+  transition: color .2s;
+  /*color: #fff;*/
+}
+
+.radio.checked svg {
+  color: inherit;
+}

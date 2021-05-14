@@ -15,7 +15,7 @@ export const tongueMixed = (drawer: Group) => {
     .curve(0.5, 32, 19, 26, 28, -3)
     // inner curve
     .curve(14, -40, 20, -52, 31, -66)
-    .curve(5, -13, 24, -24, 40, -33).offsetX(3)
+    .curve(5, -13, 24, -24, 40, -33).offset(3)
     // bottom
     .curve(45, -46, 120, -72, 192.9, -80).offset(-28, 36)
 }

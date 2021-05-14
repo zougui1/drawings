@@ -86,10 +86,11 @@ export const earsPiercingsDetailsMixed = (drawer: Group) => {
   drawer
     .path(data.danero.head.ear.piercing.bars.bottom.innerBar)
 
-    .move(414, -156.88).absolute()
-    .curve(400, -161.5).absolute()
-    .curve(399, -168, 404, -171.6).absolute()
-    .curve(418, -167).absolute()
+    .move(412.48, -157.3).absolute()
+    .curve(400, -162).absolute()
+    .curve(399.5, -168, 404, -171.4).absolute()
+    .curve(416.7, -167.4).absolute()
+    .close()
   //#endregion
 
   //#region ear - top bar piercing; stroke & fill
@@ -110,9 +111,10 @@ export const earsPiercingsDetailsMixed = (drawer: Group) => {
   drawer
     .path(data.danero.head.ear.piercing.bars.top.innerBar)
 
-    .move(424, -181.86).absolute()
-    .curve(412, -185.49).absolute()
-    .curve(411.6, -191, 415, -194.36).absolute()
-    .curve(427.3, -190.8).absolute()
+    .move(422.88, -181.9).absolute()
+    .curve(412, -185.19).absolute()
+    .curve(411.6, -191, 415, -194).absolute()
+    .curve(426.69, -190.8).absolute()
+    .close()
   //#endregion
 }

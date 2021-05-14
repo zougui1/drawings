@@ -1,0 +1,7 @@
+.image-input-root.dark .image-input-label,
+.image-input-root.dark .image-input-input .MuiInput-root::before,
+.image-input-root.dark .image-input-input input::placeholder,
+.image-input-root.dark .image-input-icon {
+  color: #eee !important;
+  border-bottom-color: #eee !important;
+}

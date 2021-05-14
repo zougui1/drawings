@@ -1,11 +1,32 @@
 {
   "name": "drawings",
   "version": "1.0.0",
-  "description": "",
   "main": "ecosystem.config.js",
   "scripts": {
-    "start": "pm2 start ./ecosystem.config.js"
+    "start": "lerna run --parallel compile",
+    "start:pm2": "pm2 start ./ecosystem.config.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zougui1/drawings.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/zougui1/drawings/issues"
+  },
+  "homepage": "https://github.com/zougui1/drawings#readme",
+  "description": "",
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "@material-ui/styles": "^4.11.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
 }

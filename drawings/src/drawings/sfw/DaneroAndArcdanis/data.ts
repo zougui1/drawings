@@ -34,7 +34,7 @@ export const data = {
           name: 'ring',
           zIndex: 160,
           stroke: palette.borders,
-          fill: palette.danero.beard,
+          fill: palette.danero.metal,
         },
 
         color: {

@@ -22,6 +22,6 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "drawer": "link:../drawer"
+    "drawer": "1.0.0"
   }
 }

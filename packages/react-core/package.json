@@ -1,0 +1,37 @@
+{
+  "name": "react-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "start": "nodemon lib -r source-map-support/register lib",
+    "build": "heft build --clean",
+    "compile": "heft build --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@material-ui/types": "^5.1.0",
+    "@rushstack/eslint-config": "^2.3.3",
+    "@rushstack/heft": "^0.28.1",
+    "@types/heft-jest": "^1.0.2",
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.37",
+    "@types/react": "^17.0.3",
+    "csstype": "2.5.2",
+    "eslint": "^7.24.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "lodash": "^4.17.21",
+    "react-error-boundary": "^3.1.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

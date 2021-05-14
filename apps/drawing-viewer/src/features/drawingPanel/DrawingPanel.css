@@ -1,0 +1,60 @@
+.drawing-panel {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 899999;
+  top: 0;
+  right: 690px;
+  background-color: #0009;
+  color: #ccc;
+  text-shadow: 0 0 1px #fff6;
+  padding: 10px 12px;
+  min-width: 100px;
+  letter-spacing: 1.1px;
+  /* -100px which is the timeline's height */
+  max-height: calc(100% - 100px);
+  overflow-y: auto;
+  box-shadow: 0 0 5px 2px #0006;
+  user-select: none;
+}
+
+.drawing-panel p,
+.drawing-panel label,
+.drawing-panel input,
+.drawing-panel button {
+  color: #ccc;
+  text-shadow: 0 0 1px #fff6;
+}
+
+.drawing-panel .canvas-position-container {
+  margin-bottom: 12px;
+}
+
+.drawing-panel input::placeholder {
+  opacity: 1;
+}
+
+.drawing-panel .information-value.limited {
+  color: #d34;
+}
+
+.drawing-panel .panel-section-title {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.drawing-panel .panel-section {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.MuiTreeItem-group {
+  margin-left: 14px !important;
+}
+
+.MuiTreeItem-label {
+  margin-left: -11px !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #ccc !important;
+}
